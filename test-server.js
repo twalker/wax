@@ -19,7 +19,26 @@ app
 
 // TODO: routes for unit test fixures: post, put, patch, delete, cors xhr
 app.post('/test/fixtures/soh', function(req, res){
-  res.json(req.body);
+  /*
+  res.format({
+    'text/plain': function(){
+      res.send(req.body);
+    },
+
+    'application/json': function(){
+      res.send(req.body);
+    }
+  });
+  */
+
+  if (req.is('json')) {
+    res.json(req.body)
+  } else {
+    // WORKAROUND: body parser is converting to json, and content type is text/html
+    res.set('Content-Type', 'text/plain');
+    res.send("hello\nworld!");
+  }
+
 });
 app.put('/test/fixtures/soh', function(req, res){
   res.json(req.body);

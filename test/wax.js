@@ -80,19 +80,21 @@ require(['mocha', 'chai'], function(mocha, chai, wax){
       xhr.postMessage({"delete": '/test/fixtures/soh'});
     });
 
-    it('should send text', function(){
+    it('should send text', function(done){
+      var xhr = new Worker('/wax.js');
+      var hello = "hello\nworld!";
+      xhr.addEventListener('message', function(e){
+        assert.equal(e.data, hello);
+        done()
+      });
+      xhr.postMessage({post: '/test/fixtures/soh', text: hello});
+    });
+
+    it.skip('should parse json but leave other content types alone', function(){
 
     });
 
-    it('should parse json but leave other content types alone', function(){
-
-    });
-
-    it('should PUT', function(){
-
-    });
-
-    it('should PATCH', function(){
+    it.skip('should PATCH', function(done){
 
     });
 
