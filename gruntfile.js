@@ -27,27 +27,14 @@ module.exports = function(grunt) {
           livereload: true
         }
       }
-    },
-
-    bower: {
-      install: {
-        options: {
-          targetDir: './lib',
-          layout: 'byComponent',
-          install: true,
-          verbose: true,
-          cleanTargetDir: false,
-          cleanBowerDir: true
-        }
-      }
     }
+
   });
 
   grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-contrib-jshint');
    grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('install', ['bower']);
   grunt.registerTask('build', ['jshint']);
   grunt.registerTask('dev', ['build', 'watch']);
 

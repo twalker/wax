@@ -43,23 +43,23 @@ var request = function request(options){
   var xhr = new XMLHttpRequest();
   xhr.addEventListener('load', onLoad, false);
   //xhr.addEventListener('error', onError, false);
-  var data = null;
+  var body = null;
 
-  if(options.json) data = JSON.stringify(options.json);
-  if(options.text) data = options.text;
+  if(options.json) body = JSON.stringify(options.json);
+  if(options.text) body = options.text;
 
   // synchronous xhr since webworker has a thread
   xhr.open(options.verb, options.url, false);
   xhr.setRequestHeader('Content-Type', mimeMap[options.mime]);
   xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-  xhr.send(data);
+  xhr.send(body);
 
 }
 
 function onLoad(e){
   //currentTarget, srcElement, target,
   var xhr = e.target,
-    resType = xhr.getResponseHeader('content-type'),
+    resType = xhr.getResponseHeader('Content-Type'),
     isNotJson = (resType && !/json/.test(resType)) || !xhr.responseText;
 
   if(xhr.status < 300){

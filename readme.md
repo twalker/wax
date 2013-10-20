@@ -21,6 +21,12 @@ require(function(require){
 A browser that supports [web workers](http://caniuse.com/#feat=webworkers). 
 Tested in Chrome ??, Firefox ?? IE 10??
 
+
+## Test
+`npm install`  
+`bower install`  
+`npm test`  
+
 ## TODO
  
  * add support for formdata arraybuffer, blob, dataURL? document?!  

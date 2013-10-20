@@ -3,8 +3,8 @@
  */
 require.config({
   paths: {
-    mocha: '../lib/mocha/js/mocha',
-    chai: '../lib/chai/chai'
+    mocha: '../bower_components/mocha/mocha',
+    chai: '../bower_components/chai/chai'
   },
 
   shim: {

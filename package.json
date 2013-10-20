@@ -4,14 +4,11 @@
   "dependencies": {},
   "devDependencies": {
     "express": "*",
-    "bower": "~1.2.7",
-    "grunt-cli": "latest",
     "grunt": "~0.4.1",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-jshint": "~0.6.4",
-     "grunt-bower-task": "~0.3.2"
+    "grunt-contrib-jshint": "~0.6.4"
   },
   "scripts": {
-    "postinstall": "node node_modules/grunt-cli/bin/grunt install"
+    "test": "node test-server.js"
   }
 }

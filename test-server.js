@@ -55,5 +55,5 @@ app.get('/:filename', function(req, res){
 */
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('test server at: http://' + app.get('host') + ':' + app.get('port'));
+  console.log('test server at: http://' + app.get('host') + ':' + app.get('port') + '/test/');
 });
