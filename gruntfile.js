@@ -29,10 +29,6 @@ module.exports = function(grunt) {
       }
     },
 
-    connect: {
-      server: {options:{port:8000}}
-    },
-
     bower: {
       install: {
         options: {
@@ -49,12 +45,11 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('install', ['bower']);
   grunt.registerTask('build', ['jshint']);
-  grunt.registerTask('dev', ['build', 'connect', 'watch']);
+  grunt.registerTask('dev', ['build', 'watch']);
 
   grunt.registerTask('default', ['build']);
 

@@ -13,12 +13,12 @@ require(function(require){
   wax.on('message', function(e){
     var greatAlbum = e.data;
   });
-  wax.postMessage({get: 'slayer/albums', json: {year: 1986, title: 'Reign in Blood'}});
+  wax.postMessage({post: 'slayer/albums', json: {year: 1986, title: 'Reign in Blood'}});
 </script>
 ```
 
 ## Dependencies
-A browser that supports web workers and xhr. 
+A browser that supports [web workers](http://caniuse.com/#feat=webworkers). 
 Tested in Chrome ??, Firefox ?? IE 10??
 
 ## TODO
@@ -26,7 +26,7 @@ Tested in Chrome ??, Firefox ?? IE 10??
  * add support for formdata arraybuffer, blob, dataURL? document?!  
     see: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Sending_and_Receiving_Binary_Data
  * trigger error handler when xhr fails
- * add CORS support for IE?  
+ * add CORS support 
     http://www.kendoui.com/blogs/teamblog/posts/11-10-03/using_cors_with_all_modern_browsers.aspx
 
 

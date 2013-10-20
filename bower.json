@@ -1,5 +1,6 @@
 {
   "name": "wax",
+  "main": "wax.js",
   "version": "0.0.1",
   "dependencies": {},
   "exportsOverride": {
