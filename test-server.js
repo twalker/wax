@@ -13,10 +13,21 @@ app
   .use(express.favicon())
   .use(express.logger('dev'))
   .use(express.static(__dirname))
+  .use(express.bodyParser())
   .use(app.router)
   .use(express.errorHandler({showStack: true, dumpExceptions: true}));
 
 // TODO: routes for unit test fixures: post, put, patch, delete, cors xhr
+app.post('/test/fixtures/soh', function(req, res){
+  res.json(req.body);
+});
+app.put('/test/fixtures/soh', function(req, res){
+  res.json(req.body);
+});
+app.del('/test/fixtures/soh', function(req, res){
+  res.send(204);
+});
+
 /*
 app.get('/:filename', function(req, res){
   var filePath = path.join('/test/fixtures/', req.params.filename);

@@ -60,7 +60,7 @@ function onLoad(e){
   //currentTarget, srcElement, target,
   var xhr = e.target,
     resType = xhr.getResponseHeader('content-type'),
-    isNotJson = resType && !/json/.test(resType);
+    isNotJson = (resType && !/json/.test(resType)) || !xhr.responseText;
 
   if(xhr.status < 300){
     self.postMessage(isNotJson ? xhr.responseText : JSON.parse(xhr.responseText));

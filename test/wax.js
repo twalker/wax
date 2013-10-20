@@ -29,17 +29,17 @@ require(['mocha', 'chai'], function(mocha, chai, wax){
     xhr.postMessage(msg);
   }
 
-  send({get: '/api/eggs/blue'});
-  send({post: '/api/eggs/', json: {name: 'black', cracked:false}});
-  send({put: '/api/eggs/', text: 'foo bar');
-  send({post: '/api/eggs/', form: new FormData(elForm));
+  send({get: '/test/fixtures/reign-in-blood.json'});
+  send({post: '/test/fixtures', json: {title: 'South of Heaven', year:1988}});
+  send({put: '/test/fixtures/reign-in-blood', text: 'text title');
+  send({post: '/test/fixtures/reign-in-blood', form: new FormData(elForm));
   // TORESEARCH: xhr.send(new FormData());
   //  see https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Sending_forms_through_JavaScript
   */
 
   describe('xhr worker is god damn hard to test', function() {
 
-    it('should create and perform xhr operations on it\'s own thread', function(done){
+    it('should GET json', function(done){
       var xhr = new Worker('/wax.js');
       assert.isObject(xhr);
 
@@ -52,19 +52,41 @@ require(['mocha', 'chai'], function(mocha, chai, wax){
 
     });
 
-    it('should send json, or formdata', function(){
+    it('should POST json', function(done){
+      var xhr = new Worker('/wax.js');
+      var soh = {id:"soh", title: "South of Heaven"};
+      xhr.addEventListener('message', function(e){
+        assert.deepEqual(e.data, soh);
+        done()
+      });
+      xhr.postMessage({post: '/test/fixtures/soh', json: soh});
+    });
+
+    it('should PUT json', function(done){
+      var xhr = new Worker('/wax.js');
+      var soh = {id:"soh", title: "South of Heaven Updated"};
+      xhr.addEventListener('message', function(e){
+        assert.deepEqual(e.data, soh);
+        done()
+      });
+      xhr.postMessage({post: '/test/fixtures/soh', json: soh});
+    });
+
+    it('should DELETE', function(done){
+      var xhr = new Worker('/wax.js');
+      xhr.addEventListener('message', function(e){
+        done();
+      });
+      xhr.postMessage({"delete": '/test/fixtures/soh'});
+    });
+
+    it('should send text', function(){
 
     });
 
     it('should parse json but leave other content types alone', function(){
 
     });
-
-    it('should POST', function(){
-      //xhr.postMessage({post: '/api/eggs', data: {'name':'black', cracked: true}});
-
-    });
-
 
     it('should PUT', function(){
 
