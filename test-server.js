@@ -39,6 +39,10 @@ app.put('/test/fixtures/soh', function(req, res){
 app.del('/test/fixtures/soh', function(req, res){
   res.send(204);
 });
+// for image dataURI post
+app.post('/test/fixtures/bird', function(req, res){
+  res.send(200);
+});
 
 /*
 app.get('/:filename', function(req, res){

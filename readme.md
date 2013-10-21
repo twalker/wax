@@ -1,6 +1,7 @@
 # wax
 
-**W**orker **a**nd **x**hr.   ajax work on a different thread.
+**W**orker **a**nd **x**hr2.  
+ajax actions their own thread.
 
 ## Getting Started
 
@@ -29,7 +30,7 @@ Tested in Chrome ??, Firefox ?? IE 10??
 
 ## TODO
  
- * add support for formdata arraybuffer, blob, dataURL? document?!  
+ * add support for formdata (NO, need dom) arraybuffer, blob, dataURL? document?!  
     see: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Sending_and_Receiving_Binary_Data
  * trigger error handler when xhr fails
  * add CORS support 
