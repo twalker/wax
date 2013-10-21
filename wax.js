@@ -1,22 +1,19 @@
 /**
  * wax - worker and xhr
- * An asychronous web worker using xhr synchronously.
+ * An asynchronous web worker using xhr synchronously.
  *
  * Currently supported content types:
  * json
  * text
  *
-  */
+ */
 self.addEventListener('message', function(e){
   var isVerb = /get|post|put|delete|patch/i;
   var verb = Object.keys(e.data).filter(isVerb.test, isVerb)[0];
 
   var mime = 'json';
   for(var p in mimeMap){
-    if(e.data.hasOwnProperty(p)){
-      mime = p;
-      //data = e.data[p];
-    }
+    if(e.data.hasOwnProperty(p)) mime = p;
   }
   // allow mime override
   if(e.data.mime) mime = e.data.mime;
@@ -50,7 +47,8 @@ var request = function request(options){
 
   // synchronous xhr since webworker has a thread
   xhr.open(options.verb, options.url, false);
-  xhr.setRequestHeader('Content-Type', mimeMap[options.mime]);
+  xhr.setRequestHeader ("Accept", mimeMap[options.mime] + ',*/*');
+  if(body) xhr.setRequestHeader('Content-Type', mimeMap[options.mime]);
   xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
   xhr.send(body);
 

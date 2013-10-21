@@ -90,10 +90,6 @@ require(['mocha', 'chai'], function(mocha, chai, wax){
       xhr.postMessage({post: '/test/fixtures/soh', text: hello});
     });
 
-    it.skip('should parse json but leave other content types alone', function(){
-
-    });
-
     it.skip('should PATCH', function(done){
 
     });
