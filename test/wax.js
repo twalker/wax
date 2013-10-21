@@ -100,6 +100,18 @@ require(['mocha', 'chai'], function(mocha, chai, wax){
       xhr.postMessage({post: '/test/fixtures/bird', text: bird});
     });
 
+    it('should fire an error event', function(done){
+      var xhr = new Worker('/wax.js');
+      xhr.addEventListener('error', function(e){
+        e.preventDefault();
+        console.log('handle error', e.message, e.filename, e.lineno);
+        assert.isTrue(/404/.test(e.message));
+        done();
+      });
+
+      xhr.postMessage({ get: '/no/exist'});
+    });
+
     it.skip('should POST FormData', function(done){
       var xhr = new Worker('/wax.js');
       var fd = new FormData();
@@ -111,20 +123,6 @@ require(['mocha', 'chai'], function(mocha, chai, wax){
         done()
       });
       xhr.postMessage({post: '/test/fixtures/soh', form: fd});
-
-
-    });
-
-    it('should fire an error event', function(done){
-      var xhr = new Worker('/wax.js');
-      xhr.addEventListener('error', function(e){
-        e.preventDefault();
-        console.log('handle error', e.message, e.filename, e.lineno);
-        assert.isTrue(/404/.test(e.message));
-        done();
-      });
-
-      xhr.postMessage({ get: '/no/exist'});
     });
 
   });

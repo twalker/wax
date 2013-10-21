@@ -44,6 +44,13 @@ app.post('/test/fixtures/bird', function(req, res){
   res.send(200);
 });
 
+app.all('/dev/null/:timeout', function(req, res){
+  setTimeout(function(){
+    res.send(200)
+  }, req.params.timeout)
+
+});
+
 /*
 app.get('/:filename', function(req, res){
   var filePath = path.join('/test/fixtures/', req.params.filename);

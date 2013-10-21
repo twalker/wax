@@ -4,15 +4,17 @@
     <meta charset="utf-8"/>
     <title>wax examples</title>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css"/>
-    <link rel="stylesheet" href="../src/wax.css"/>
-    <script src="/bower_components/requirejs/js/require.js" data-main="main"></script>
+    <script src="/bower_components/requirejs/require.js" data-main="main"></script>
   </head>
   <body>
     <h1>wax examples</h1>
-    <form>
-      <input name="title" value="south of heaven" />
-      <input name="year" value="1988" />
-      <button type="submit"></button>
+    <h3>Posting image data</h3>
+    <p>Posts the DataURL of a canvas containing a 3.3MB photo.
+    <form class="dataurl-form">
+      <div style="max-height: 200px; overflow: auto;">
+        <canvas id="canvas"></canvas>
+      </div>
+      <button type="submit">post DataURI</button>
     </form>
   </body>
 </html>

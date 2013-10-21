@@ -39,23 +39,21 @@ var mimeMap = {
 var request = function request(options){
   var xhr = new XMLHttpRequest();
   xhr.addEventListener('load', onLoad, false);
-  //xhr.addEventListener('error', onError, false);
-  var body = null;
+  xhr.addEventListener('error', onError, false);
 
+  var body = null;
   if(options.json) body = JSON.stringify(options.json);
   if(options.text) body = options.text;
 
   // synchronous xhr since webworker has a thread
   xhr.open(options.verb, options.url, false);
-  xhr.setRequestHeader ("Accept", mimeMap[options.mime] + ',*/*');
+  xhr.setRequestHeader ('Accept', mimeMap[options.mime] + ',*/*');
   if(body) xhr.setRequestHeader('Content-Type', mimeMap[options.mime]);
   xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
   xhr.send(body);
-
 }
 
 function onLoad(e){
-  //currentTarget, srcElement, target,
   var xhr = e.target,
     resType = xhr.getResponseHeader('Content-Type'),
     isNotJson = (resType && !/json/.test(resType)) || !xhr.responseText;
@@ -63,12 +61,10 @@ function onLoad(e){
   if(xhr.status < 300){
     self.postMessage(isNotJson ? xhr.responseText : JSON.parse(xhr.responseText));
   } else {
-    // TODO: find a way to trigger error event
     throw new Error(xhr.status + ' ' + xhr.statusText);
   }
 }
 
 function onError(e){
-  var xhr = e.target;
-  throw new Error(xhr.status + ' ' + xhr.statusText);
+  throw new Error('Network level error occurred: ' + e.message);
 }
