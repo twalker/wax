@@ -64,15 +64,11 @@ function onLoad(e){
     self.postMessage(isNotJson ? xhr.responseText : JSON.parse(xhr.responseText));
   } else {
     // TODO: find a way to trigger error event
+    throw new Error(xhr.status + ' ' + xhr.statusText);
   }
 }
 
 function onError(e){
-  //var xhr = e.target;
-  // console.log('onError hit')
-  //e.preventDefault();
-  //throw new ErrorEvent('FOO')
-  //throw e;
-  //throw new Error();
-  //self.dispatchEvent('error')
+  var xhr = e.target;
+  throw new Error(xhr.status + ' ' + xhr.statusText);
 }

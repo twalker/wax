@@ -115,17 +115,16 @@ require(['mocha', 'chai'], function(mocha, chai, wax){
 
     });
 
-    it.skip('should fire an error event', function(done){
+    it('should fire an error event', function(done){
       var xhr = new Worker('/wax.js');
       xhr.addEventListener('error', function(e){
-        //console.log('error happened', e);
-        //e.message + ' (' + e.filename + ':' + e.lineno + ')');
-        assert.isTrue(true);
-        done()
+        e.preventDefault();
+        console.log('handle error', e.message, e.filename, e.lineno);
+        assert.isTrue(/404/.test(e.message));
+        done();
       });
 
       xhr.postMessage({ get: '/no/exist'});
-
     });
 
   });

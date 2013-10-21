@@ -1,21 +1,16 @@
 # wax
 
 **W**orker **a**nd **x**hr2.  
-ajax actions their own thread.
+ajax actions on their own thread.
 
 ## Getting Started
 
-In your web page:
-
-```html
-<script>
-require(function(require){
-  var wax = new Worker('wax.js');
-  wax.on('message', function(e){
-    var greatAlbum = e.data;
-  });
-  wax.postMessage({post: 'slayer/albums', json: {year: 1986, title: 'Reign in Blood'}});
-</script>
+```javascript
+var wax = new Worker('wax.js');
+wax.on('message', function(e){
+  var greatAlbum = e.data;
+});
+wax.postMessage({post: 'slayer/albums', json: {year: 1986, title: 'Reign in Blood'}});
 ```
 
 ## Dependencies
@@ -30,7 +25,7 @@ Tested in Chrome ??, Firefox ?? IE 10??
 
 ## TODO
  
- * add support for formdata (NO, need dom) arraybuffer, blob, dataURL? document?!  
+ * add support for arraybuffer, blob, ??
     see: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Sending_and_Receiving_Binary_Data
  * trigger error handler when xhr fails
  * add CORS support 
