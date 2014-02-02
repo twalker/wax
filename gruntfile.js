@@ -33,7 +33,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('build', ['jshint']);
   grunt.registerTask('dev', ['build', 'watch']);

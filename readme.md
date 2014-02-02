@@ -15,7 +15,7 @@ wax.postMessage({post: 'slayer/albums', json: {year: 1986, title: 'Reign in Bloo
 
 ## Dependencies
 A browser that supports [web workers](http://caniuse.com/#feat=webworkers). 
-Tested in Chrome ??, Firefox ?? IE 10??
+Tested in Chrome 30+, Firefox 26+, IE 10
 
 
 ## Test
