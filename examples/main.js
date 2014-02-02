@@ -19,6 +19,7 @@ require([], function(){
     wax.addEventListener('message', function(e){
       console.log('dataurl number '+ (postCount++) +' posted')
     });
+
     wax.postMessage({post: '/dev/null/10000', text: canvas.toDataURL()});
 
   }, false);

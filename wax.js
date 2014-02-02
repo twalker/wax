@@ -7,6 +7,13 @@
  * text
  *
  */
+var mimeMap = {
+  //form: 'application/x-www-form-urlencoded; charset=utf-8', // xhr default
+  //form: 'multipart/form-data; charset=utf-8'
+  json: 'application/json',
+  text: 'text/plain'
+};
+
 self.addEventListener('message', function(e){
   var isVerb = /get|post|put|delete|patch/i;
   var verb = Object.keys(e.data).filter(isVerb.test, isVerb)[0];
@@ -28,13 +35,6 @@ self.addEventListener('message', function(e){
 
   self.close();
 });
-
-var mimeMap = {
-  //form: 'application/x-www-form-urlencoded; charset=utf-8', // xhr default
-  //form: 'multipart/form-data; charset=utf-8'
-  json: 'application/json',
-  text: 'text/plain'
-};
 
 var request = function request(options){
   var xhr = new XMLHttpRequest();

@@ -24,23 +24,23 @@ Tested in Chrome 30+, Firefox 26+, IE 10
 `npm test`  
 
 ## TODO
+
+* use supertest instead of adhock test server
+* mow the lawn: grunt => gulp, requirejs => browserify
+* add support for arraybuffer, blob, ??
+    
+  -  see: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Sending_and_Receiving_Binary_Data
+
  
- * add support for arraybuffer, blob, ??
-    see: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Sending_and_Receiving_Binary_Data
- * trigger error handler when xhr fails
- * add CORS support 
-    http://www.kendoui.com/blogs/teamblog/posts/11-10-03/using_cors_with_all_modern_browsers.aspx
+* test CORS support 
+  
+  - see http://www.kendoui.com/blogs/teamblog/posts/11-10-03/using_cors_with_all_modern_browsers.aspx
 
 
-## Examples
-_(Coming soon)_
-
-## Release History
-_(Nothing yet)_
 
 -----------------------------
 
-Copyright (c) 2013 tim walker
+Copyright (c) 2014 tim walker
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
