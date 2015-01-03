@@ -13,8 +13,8 @@
     }
   },
   "devDependencies": {
-    "requirejs": "*",
-    "mocha": "~1.17",
-    "chai": "~1.9"
+    "requirejs": "~2.1.15",
+    "mocha": "~2.1.0",
+    "chai": "~1.10.0"
   }
 }

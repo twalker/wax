@@ -1,7 +1,8 @@
-var http = require('http')
-  , path = require('path')
-  , fs = require('fs')
-  , express = require('express');
+var http = require('http'),
+  path = require('path'),
+  fs = require('fs'),
+  express = require('express'),
+  bodyParser = require('body-parser');
 
 var app = module.exports = express();
 
@@ -10,12 +11,8 @@ app
   .set('host', process.env.HOST || 'localhost');
 
 app
-  .use(express.favicon())
-  .use(express.logger('dev'))
   .use(express.static(__dirname))
-  .use(express.bodyParser())
-  .use(app.router)
-  .use(express.errorHandler({showStack: true, dumpExceptions: true}));
+  .use(bodyParser.json());
 
 // TODO: routes for unit test fixures: post, put, patch, delete, cors xhr
 app.post('/test/fixtures/soh', function(req, res){
@@ -36,17 +33,17 @@ app.post('/test/fixtures/soh', function(req, res){
 app.put('/test/fixtures/soh', function(req, res){
   res.json(req.body);
 });
-app.del('/test/fixtures/soh', function(req, res){
-  res.send(204);
+app.delete('/test/fixtures/soh', function(req, res){
+  res.sendStatus(204);
 });
 // for image dataURI post
 app.post('/test/fixtures/bird', function(req, res){
-  res.send(200);
+  res.sendStatus(200);
 });
 
 app.all('/dev/null/:timeout', function(req, res){
   setTimeout(function(){
-    res.send(200)
+    res.sendStatus(200)
   }, req.params.timeout)
 
 });
